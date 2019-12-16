@@ -14,16 +14,11 @@ class Login extends React.Component {
     }
 
     async handleLogin() {
-        const password = this.state.password;
-
-        // Encrypt Password:
-        const hashedPassword = await bcryptjs.hash(password, 10);
-        debugger;
         const payload = {
             username: this.state.username,
-            password: hashedPassword,
+            password: this.state.password,
         };
-        const baseUrl = 'http://localhost:3010'; // TODO: pull this in.
+        const baseUrl = 'https://localhost:3010'; // TODO: pull this in.
 
         fetch(`${baseUrl}/login`, { method: 'POST' })
             .then((response) => {
